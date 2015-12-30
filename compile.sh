@@ -24,12 +24,11 @@ cd native
 
 echo "<<<<<  Executing autoreconf  >>>>>"
 
-autoreconf --install --force
+rm -rf build
+mkdir build
+cd build
 
-rm -rf obj
-mkdir obj
-cd obj
-../configure --prefix=/usr
+cmake ..
 make
 make DESTDIR=`pwd` install
 

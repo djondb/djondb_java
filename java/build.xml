@@ -10,12 +10,23 @@
 
   <target name="checkos">
 	  <echo message="Checking os" />
+
+	  <condition property="isMac">
+		  <os family="mac" />
+	  </condition>
+
 	  <condition property="isWindows">
 		  <os family="windows" />
 	  </condition>
 
 	  <condition property="isLinux">
-		  <os family="unix" />
+		  <and>
+			  <os family="unix" />
+
+			  <not>
+				  <os family="mac" />
+			  </not>
+		  </and>
 	  </condition>
 
 	  <condition property="isDebug">
@@ -23,9 +34,9 @@
 	  </condition>
 
 	  <condition property="isRelease">
-              <not>
-		  <equals arg1="${debug}" arg2="true" />
-              </not>
+		  <not>
+			  <equals arg1="${debug}" arg2="true" />
+		  </not>
 	  </condition>
 
   </target>
@@ -46,10 +57,16 @@
   </target>
 
   <target name="if_unix" depends="checkos" if="isLinux">
+	  <echo message="Came into the Linux target" />
 	  <property name="native_file" value="/obj/usr/lib/libdjon-javadriver.so" />
   </target>
 
-  <target name="init" depends="if_windows, if_unix">
+  <target name="if_mac" depends="checkos" if="isMac">
+	  <echo message="Came into the Mac target" />
+	  <property name="native_file" value="/build/libdjonjavadriver.dylib" />
+  </target>
+
+  <target name="init" depends="if_windows, if_unix, if_mac">
 	  <!-- Create the time stamp -->
 	  <tstamp/>
 	  <!-- Create the build directory structure used by compile -->
@@ -81,8 +98,8 @@
   </target>
 
   <target name="test">
-	<javac srcdir="${test-src}" destdir="${build}"/>
-  	<java classpath="${build}" classname="Main" fork="true"/>
+	  <javac srcdir="${test-src}" destdir="${build}"/>
+	  <java classpath="${build}" classname="Main" fork="true"/>
   </target>
 
 </project>

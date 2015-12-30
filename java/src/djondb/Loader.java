@@ -17,7 +17,10 @@ public class Loader {
         if (resourceAsStream == null) {
             resourceAsStream = Loader.class.getResourceAsStream("/djonjavadriver.dll");
             libraryExtension = ".dll";
-			System.out.println("Resource as Stream dll: " + resourceAsStream);
+        }
+        if (resourceAsStream == null) {
+            resourceAsStream = Loader.class.getResourceAsStream("/libdjonjavadriver.dylib");
+            libraryExtension = ".dll";
         }
         if (resourceAsStream != null) {
             FileOutputStream fos = null;
