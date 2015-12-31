@@ -23,15 +23,16 @@ public class HelloWorld {
 
             con.insert("dbjava", "nsjava", "{ 'name': 'John', 'lastName': 'Smith' }");
 
-            BSONArrayObj wrapper = con.find("dbjava", "nsjava", "$'lastName' == 'Smith'");
+            DjondbCursor cursor = con.find("dbjava", "nsjava", "$'lastName' == 'Smith'");
+	    while (cursor.next()) {
+		    BSONObj bson = cursor.current();
 
-            BSONObj bson = wrapper.get(0);
+		    System.out.println("Hello: " + bson.getString("name"));
 
-            System.out.println("Hello: " + bson.getString("name"));
-
-            DjondbConnectionManager.releaseConnection(con);
-        } catch (LibraryException e) {
-            e.printStackTrace();
-        }
+	    }
+	    DjondbConnectionManager.releaseConnection(con);
+	} catch (LibraryException e) {
+		e.printStackTrace();
+	}
     }
 }

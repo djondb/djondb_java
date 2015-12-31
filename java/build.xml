@@ -53,7 +53,7 @@
   </target>
 
   <target name="if_windows" depends="checkos,configuration" if="isWindows">
-	  <property name="native_file" value="/vs2008/djonjavadriver.dll" />
+	  <property name="native_file" value="/build/RelWithDebInfo/djonjavadriver.dll" />
   </target>
 
   <target name="if_unix" depends="checkos" if="isLinux">
@@ -99,7 +99,7 @@
 
   <target name="test">
 	  <javac srcdir="${test-src}" destdir="${build}"/>
-	  <java classpath="${build}" classname="Main" fork="true"/>
+	  <java classpath="${build}" classname="djondb.HelloWorld" fork="true"/>
   </target>
 
 </project>
