@@ -23,7 +23,7 @@ public class HelloWorld {
 
             con.insert("dbjava", "nsjava", "{ 'name': 'John', 'lastName': 'Smith' }");
 
-            DjondbCursor cursor = con.find("dbjava", "nsjava", "$'lastName' == 'Smith'");
+            DjondbCursor cursor = con.executeQuery("select * from dbjava:nsjava where lastName == 'Smith'");
 	    while (cursor.next()) {
 		    BSONObj bson = cursor.current();
 
