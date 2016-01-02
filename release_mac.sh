@@ -2,6 +2,7 @@
 
 echo "<<<<<  Executing cmake  >>>>>"
 
+sh update.sh
 cd native
 rm -rf build
 mkdir build
