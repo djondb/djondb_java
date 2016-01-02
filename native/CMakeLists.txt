@@ -5,6 +5,8 @@ SET(CMAKE_MACOSX_RPATH ON)
 
 IF ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
 	set(LINUX true)
+	set(LIBRARY_PREFIX "${PROJECT_SOURCE_DIR}/libs/lib")
+	set(LIBRARY_SUFFIX ".a")
 ENDIF ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
 
 
@@ -97,7 +99,7 @@ IF (WIN32)
 ENDIF (WIN32)
 
 IF (LINUX)
-	target_link_libraries (djonjavadriver djon-client djon-network djon-command djon-db djon-filesystem djon-cache djon-bson djon-util antlr3c pthread uuid rt)
+	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-clientStatic${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} pthread uuid rt)
 ENDIF (LINUX)
 IF (WIN32)
 	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-client${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}pthreadVC2${LIBRARY_SUFFIX} Rpcrt4.lib)
