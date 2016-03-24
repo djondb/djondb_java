@@ -39,41 +39,6 @@ class DjondbException: public std::exception {
 		int _errorCode;
 		const char* _errorMessage;
 };
-/*****************************************************************
-  Type Definitions and macros
-  */
-
-bool isDaemon();
-void setDaemon(bool daemon);
-
-void logInfo(char* text);
-
-bool endsWith(const char* text, const char* end);
-
-std::string* uuid();
-
-bool makedir(const char* path);
-std::string* getHomeDir();
-std::string getTempDir();
-
-Version getCurrentVersion();
-Version getVersion(const char* version);
-
-typedef int (*ShutdownCallback)(void);
-int shutdownGracefully();
-void registerShutdownCallback(ShutdownCallback callback);
-
-#ifndef LINUX
-int clock_gettime(int X, struct timespec *tv);
-#define CLOCK_REALTIME 0
-#endif
-
-/***********************************************************************
- * Memory functions
- ***********************************************************************/
-void* mmalloc(size_t size);
-
-/***********************************************************************/
 
 #endif	/* _UTIL_H */
 

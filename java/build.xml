@@ -63,7 +63,7 @@
 
   <target name="if_mac" depends="checkos" if="isMac">
 	  <echo message="Came into the Mac target" />
-	  <property name="native_file" value="/build/libdjonjavadriver.dylib" />
+     <property name="native_file" value="/build/libdjonjavadriver.dylib" />
   </target>
 
   <target name="init" depends="if_windows, if_unix, if_mac">

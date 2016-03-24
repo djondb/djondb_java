@@ -20,7 +20,7 @@ public class Loader {
         }
         if (resourceAsStream == null) {
             resourceAsStream = Loader.class.getResourceAsStream("/libdjonjavadriver.dylib");
-            libraryExtension = ".dll";
+            libraryExtension = ".dylib";
         }
         if (resourceAsStream != null) {
             FileOutputStream fos = null;

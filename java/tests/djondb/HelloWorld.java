@@ -13,7 +13,18 @@ public class HelloWorld {
 	public void helloWorld() {
 		try {
 			Loader.initialize();
+		} catch (LibraryException e) {
+			e.printStackTrace();
+         return;
+		}
+      try {
 
+			BSONObj o = BSONParser.parse("a");
+         throw new java.lang.Error("An exception should be thrown here");
+		} catch (djondb.ParseException e) {
+         System.out.println("Exception: " + e.getMessage2());
+		}
+		try {
 			DjondbConnection con = DjondbConnectionManager.getConnection("localhost");
 
 			if (!con.open()) {
@@ -31,7 +42,7 @@ public class HelloWorld {
 
 			}
 			DjondbConnectionManager.releaseConnection(con);
-		} catch (LibraryException e) {
+		} catch (DjondbException e) {
 			e.printStackTrace();
 		}
 	}

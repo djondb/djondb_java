@@ -1,8 +1,11 @@
 #!/bin/sh
 
-echo "<<<<<  Executing cmake  >>>>>"
+echo "<<<<<  Generating code  >>>>>"
 
 sh update.sh
+
+swig -outdir java/src/djondb -o native/javadriver_wrap.cpp -c++ -java -package djondb driver_java.i
+
 cd native
 rm -rf build
 mkdir build
