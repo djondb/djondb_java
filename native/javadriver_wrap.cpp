@@ -1654,6 +1654,16 @@ SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1BSONParseException_1_1S
 }
 
 
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1BSONParseException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  BSONParseException *arg1 = (BSONParseException *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(BSONParseException **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jstring JNICALL Java_djondb_djonwrapperJNI_BSONParseException_1what(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   BSONParseException *arg1 = (BSONParseException *) 0 ;
@@ -1681,16 +1691,6 @@ SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_BSONParseException_1errorCode
   result = (int)((BSONParseException const *)arg1)->errorCode();
   jresult = (jint)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1BSONParseException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  BSONParseException *arg1 = (BSONParseException *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(BSONParseException **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -1806,7 +1806,7 @@ SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1ParseException_1_1SWIG_
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
     if (!arg2) return 0;
   }
-  result = (ParseException *)new ParseException(arg1,(char const *)arg2);
+  result = (ParseException *)new ParseException(arg1,arg2);
   *(ParseException **)&jresult = result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
@@ -1829,6 +1829,16 @@ SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1ParseException_1_1SWIG_
   result = (ParseException *)new ParseException((ParseException const &)*arg1);
   *(ParseException **)&jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1ParseException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ParseException *arg1 = (ParseException *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ParseException **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -1859,16 +1869,6 @@ SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_ParseException_1errorCode(JNI
   result = (int)((ParseException const *)arg1)->errorCode();
   jresult = (jint)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1ParseException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  ParseException *arg1 = (ParseException *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(ParseException **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -1987,6 +1987,16 @@ SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1DjondbException_1_1SWIG
 }
 
 
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1DjondbException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  DjondbException *arg1 = (DjondbException *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(DjondbException **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jstring JNICALL Java_djondb_djonwrapperJNI_DjondbException_1what(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   DjondbException *arg1 = (DjondbException *) 0 ;
@@ -2017,13 +2027,230 @@ SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_DjondbException_1errorCode(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_delete_1DjondbException(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  DjondbException *arg1 = (DjondbException *) 0 ;
+SWIGEXPORT jboolean JNICALL Java_djondb_djonwrapperJNI_isDaemon(JNIEnv *jenv, jclass jcls) {
+  jboolean jresult = 0 ;
+  bool result;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(DjondbException **)&jarg1; 
-  delete arg1;
+  result = (bool)isDaemon();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_setDaemon(JNIEnv *jenv, jclass jcls, jboolean jarg1) {
+  bool arg1 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = jarg1 ? true : false; 
+  setDaemon(arg1);
+}
+
+
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_logInfo(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  char *arg1 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return ;
+  }
+  logInfo(arg1);
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_djondb_djonwrapperJNI_endsWith(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jboolean jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (bool)endsWith((char const *)arg1,(char const *)arg2);
+  jresult = (jboolean)result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_uuid(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::string *)uuid();
+  *(std::string **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_djondb_djonwrapperJNI_makedir(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jboolean jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  result = (bool)makedir((char const *)arg1);
+  jresult = (jboolean)result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_getHomeDir(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::string *)getHomeDir();
+  *(std::string **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_djondb_djonwrapperJNI_getTempDir(JNIEnv *jenv, jclass jcls) {
+  jstring jresult = 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = getTempDir();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_djondb_djonwrapperJNI_getCurrentUsername(JNIEnv *jenv, jclass jcls) {
+  jstring jresult = 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (char *)getCurrentUsername();
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_getCurrentVersion(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  Version result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = getCurrentVersion();
+  *(Version **)&jresult = new Version((const Version &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_getVersion(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jlong jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  Version result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  result = getVersion((char const *)arg1);
+  *(Version **)&jresult = new Version((const Version &)result); 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_shutdownGracefully(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  jint jresult = 0 ;
+  int arg1 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  result = (int)shutdownGracefully(arg1);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_djondb_djonwrapperJNI_registerShutdownCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ShutdownCallback arg1 = (ShutdownCallback) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ShutdownCallback *)&jarg1; 
+  registerShutdownCallback(arg1);
+}
+
+
+SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_clock_1gettime(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2) {
+  jint jresult = 0 ;
+  int arg1 ;
+  timespec *arg2 = (timespec *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  arg2 = *(timespec **)&jarg2; 
+  result = (int)clock_gettime(arg1,arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_CLOCK_1REALTIME_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)(0);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_mmalloc(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  jlong jresult = 0 ;
+  size_t arg1 ;
+  void *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (size_t)jarg1; 
+  result = (void *)mmalloc(arg1);
+  *(void **)&jresult = result; 
+  return jresult;
 }
 
 
@@ -2974,8 +3201,8 @@ SWIGEXPORT jint JNICALL Java_djondb_djonwrapperJNI_DjondbConnection_1backup_1_1S
 
 SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1DjondbCursor_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jstring jarg4, jlong jarg5, jobject jarg5_) {
   jlong jresult = 0 ;
-  NetworkOutputStream *arg1 = (NetworkOutputStream *) 0 ;
-  NetworkInputStream *arg2 = (NetworkInputStream *) 0 ;
+  BNetworkOutputStream *arg1 = (BNetworkOutputStream *) 0 ;
+  BNetworkInputStream *arg2 = (BNetworkInputStream *) 0 ;
   CommandWriter *arg3 = (CommandWriter *) 0 ;
   char *arg4 = (char *) 0 ;
   BSONArrayObj *arg5 = (BSONArrayObj *) 0 ;
@@ -2984,8 +3211,8 @@ SWIGEXPORT jlong JNICALL Java_djondb_djonwrapperJNI_new_1DjondbCursor_1_1SWIG_10
   (void)jenv;
   (void)jcls;
   (void)jarg5_;
-  arg1 = *(NetworkOutputStream **)&jarg1; 
-  arg2 = *(NetworkInputStream **)&jarg2; 
+  arg1 = *(BNetworkOutputStream **)&jarg1; 
+  arg2 = *(BNetworkInputStream **)&jarg2; 
   arg3 = *(CommandWriter **)&jarg3; 
   arg4 = 0;
   if (jarg4) {

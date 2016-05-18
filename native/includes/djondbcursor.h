@@ -34,8 +34,8 @@
 
 class BSONObj;
 class BSONArrayObj;
-class NetworkOutputStream;
-class NetworkInputStream;
+class BNetworkOutputStream;
+class BNetworkInputStream;
 class CommandWriter;
 
 namespace djondb {
@@ -66,7 +66,7 @@ namespace djondb {
 		 * @param cursorId contains the id of the cursor, if the cursorId is null the firstPage will contain all the records required
 		 * @param firstPage contains the first page of the cursor, the cursor will gain control of this variable, it should not freed from the caller
 		 */
-			DjondbCursor(NetworkOutputStream* nos, NetworkInputStream* nis, CommandWriter* writer, const char* cursorId, BSONArrayObj* firstPage);
+			DjondbCursor(BNetworkOutputStream* nos, BNetworkInputStream* nis, CommandWriter* writer, const char* cursorId, BSONArrayObj* firstPage);
 			DjondbCursor(const DjondbCursor& orig);
 			~DjondbCursor();
 
@@ -139,8 +139,8 @@ namespace djondb {
 			 */
 			char* _cursorId;
 
-			NetworkOutputStream*  _outputStream;
-			NetworkInputStream*   _inputStream;
+			BNetworkOutputStream*  _outputStream;
+			BNetworkInputStream*   _inputStream;
 			CommandWriter*        _commandWriter;
 			
 		private:// Private methods

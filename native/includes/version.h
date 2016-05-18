@@ -6,6 +6,7 @@
 class Version
 {
 public:
+    Version();
     Version(std::string version);
     Version(const Version& version);
     ~Version();

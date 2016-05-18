@@ -1,6 +1,7 @@
 #ifndef DJONDB_CONNECTION_H
 #define DJONDB_CONNECTION_H
 
+#include <boost/asio.hpp>
 #include <string>
 #include <vector>
 #include "bson.h"
@@ -17,13 +18,15 @@
    #define LibraryExport
 #endif
 
-class NetworkOutputStream;
-class NetworkInputStream;
+class BNetworkOutputStream;
+class BNetworkInputStream;
 class CommandWriter;
 class TransactionManager;
 class Command;
 
 #define SERVER_PORT 1243
+
+using boost::asio::ip::tcp;
 
 namespace djondb {
 
@@ -84,15 +87,17 @@ namespace djondb {
 			Command* parseCommand(const char* expression);
 
 		private:
-			NetworkOutputStream*  _outputStream;
-			NetworkInputStream*   _inputStream;
+			BNetworkOutputStream*  _outputStream;
+			BNetworkInputStream*   _inputStream;
 			CommandWriter*        _commandWriter;
 			char*          _activeTransactionId;
+			boost::asio::io_service io_service;
 
 			char* _host;
 			int _port;
 			bool _open;
 			Logger* _logger;
+			tcp::socket _socket;
 	};
 
 }

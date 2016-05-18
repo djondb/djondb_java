@@ -26,4 +26,67 @@ public class djonwrapper implements djonwrapperConstants {
     return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr, false);
   }
 
+  public static boolean isDaemon() {
+    return djonwrapperJNI.isDaemon();
+  }
+
+  public static void setDaemon(boolean daemon) {
+    djonwrapperJNI.setDaemon(daemon);
+  }
+
+  public static void logInfo(String text) {
+    djonwrapperJNI.logInfo(text);
+  }
+
+  public static boolean endsWith(String text, String end) {
+    return djonwrapperJNI.endsWith(text, end);
+  }
+
+  public static SWIGTYPE_p_std__string uuid() {
+    long cPtr = djonwrapperJNI.uuid();
+    return (cPtr == 0) ? null : new SWIGTYPE_p_std__string(cPtr, false);
+  }
+
+  public static boolean makedir(String path) {
+    return djonwrapperJNI.makedir(path);
+  }
+
+  public static SWIGTYPE_p_std__string getHomeDir() {
+    long cPtr = djonwrapperJNI.getHomeDir();
+    return (cPtr == 0) ? null : new SWIGTYPE_p_std__string(cPtr, false);
+  }
+
+  public static String getTempDir() {
+    return djonwrapperJNI.getTempDir();
+  }
+
+  public static String getCurrentUsername() {
+    return djonwrapperJNI.getCurrentUsername();
+  }
+
+  public static SWIGTYPE_p_Version getCurrentVersion() {
+    return new SWIGTYPE_p_Version(djonwrapperJNI.getCurrentVersion(), true);
+  }
+
+  public static SWIGTYPE_p_Version getVersion(String version) {
+    return new SWIGTYPE_p_Version(djonwrapperJNI.getVersion(version), true);
+  }
+
+  public static int shutdownGracefully(int code) {
+    return djonwrapperJNI.shutdownGracefully(code);
+  }
+
+  public static void registerShutdownCallback(SWIGTYPE_p_f_void__int callback) {
+    djonwrapperJNI.registerShutdownCallback(SWIGTYPE_p_f_void__int.getCPtr(callback));
+  }
+
+  public static int clock_gettime(int X, SWIGTYPE_p_timespec tv) {
+    return djonwrapperJNI.clock_gettime(X, SWIGTYPE_p_timespec.getCPtr(tv));
+  }
+
+  public static SWIGTYPE_p_void mmalloc(long size) {
+    long cPtr = djonwrapperJNI.mmalloc(size);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr, false);
+  }
+
 }

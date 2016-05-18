@@ -46,7 +46,8 @@ enum FILTER_OPERATORS {
    FO_LESSEQUALTHAN,
 	FO_GREATERTHAN,
 	FO_GREATEREQUALTHAN,
-	FO_EXISTS
+	FO_EXISTS,
+	FO_LIKE
 };
 
 enum EXPRESSION_TYPE {
@@ -60,14 +61,15 @@ FILTER_OPERATORS parseFilterOperator(const char* text);
 
 class ParseException: public std::exception {
 	public:
-		ParseException(int code, const char* error);
+		ParseException(int code, char* error);
 		ParseException(const ParseException& orig);
+		virtual ~ParseException() throw();
 		virtual const char* what() const throw();
 		int errorCode() const;
 
 	private:
 		int _errorCode;
-		const char* _errorMessage;
+		char* _errorMessage;
 };
 
 #endif // FILTERDEFS_INCLUDED_H

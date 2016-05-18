@@ -9,5 +9,6 @@
 package djondb;
 
 public interface djonwrapperConstants {
+  public final static int CLOCK_REALTIME = djonwrapperJNI.CLOCK_REALTIME_get();
   public final static int SERVER_PORT = djonwrapperJNI.SERVER_PORT_get();
 }

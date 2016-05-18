@@ -35,8 +35,8 @@ public class DjondbCursor {
     }
   }
 
-  public DjondbCursor(SWIGTYPE_p_NetworkOutputStream nos, SWIGTYPE_p_NetworkInputStream nis, SWIGTYPE_p_CommandWriter writer, String cursorId, BSONArrayObj firstPage) {
-    this(djonwrapperJNI.new_DjondbCursor__SWIG_0(SWIGTYPE_p_NetworkOutputStream.getCPtr(nos), SWIGTYPE_p_NetworkInputStream.getCPtr(nis), SWIGTYPE_p_CommandWriter.getCPtr(writer), cursorId, BSONArrayObj.getCPtr(firstPage), firstPage), true);
+  public DjondbCursor(SWIGTYPE_p_BNetworkOutputStream nos, SWIGTYPE_p_BNetworkInputStream nis, SWIGTYPE_p_CommandWriter writer, String cursorId, BSONArrayObj firstPage) {
+    this(djonwrapperJNI.new_DjondbCursor__SWIG_0(SWIGTYPE_p_BNetworkOutputStream.getCPtr(nos), SWIGTYPE_p_BNetworkInputStream.getCPtr(nis), SWIGTYPE_p_CommandWriter.getCPtr(writer), cursorId, BSONArrayObj.getCPtr(firstPage), firstPage), true);
   }
 
   public DjondbCursor(DjondbCursor orig) {

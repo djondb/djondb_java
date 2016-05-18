@@ -32,13 +32,52 @@ class DjondbException: public std::exception {
 	public:
 		DjondbException(int code, const char* error);
 		DjondbException(const DjondbException& orig);
+		virtual ~DjondbException() throw();
+
 		virtual const char* what() const throw();
 		int errorCode() const;
 
 	private:
 		int _errorCode;
-		const char* _errorMessage;
+		char* _errorMessage;
 };
+/*****************************************************************
+  Type Definitions and macros
+  */
+
+bool isDaemon();
+void setDaemon(bool daemon);
+
+void logInfo(char* text);
+
+bool endsWith(const char* text, const char* end);
+
+std::string* uuid();
+
+bool makedir(const char* path);
+std::string* getHomeDir();
+std::string getTempDir();
+
+char* getCurrentUsername();
+
+Version getCurrentVersion();
+Version getVersion(const char* version);
+
+typedef int (*ShutdownCallback)(void);
+int shutdownGracefully(int code);
+void registerShutdownCallback(ShutdownCallback callback);
+
+#ifndef LINUX
+int clock_gettime(int X, struct timespec *tv);
+#define CLOCK_REALTIME 0
+#endif
+
+/***********************************************************************
+ * Memory functions
+ ***********************************************************************/
+void* mmalloc(size_t size);
+
+/***********************************************************************/
 
 #endif	/* _UTIL_H */
 

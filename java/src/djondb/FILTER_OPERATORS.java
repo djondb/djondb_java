@@ -23,6 +23,7 @@ public final class FILTER_OPERATORS {
   public final static FILTER_OPERATORS FO_GREATERTHAN = new FILTER_OPERATORS("FO_GREATERTHAN");
   public final static FILTER_OPERATORS FO_GREATEREQUALTHAN = new FILTER_OPERATORS("FO_GREATEREQUALTHAN");
   public final static FILTER_OPERATORS FO_EXISTS = new FILTER_OPERATORS("FO_EXISTS");
+  public final static FILTER_OPERATORS FO_LIKE = new FILTER_OPERATORS("FO_LIKE");
 
   public final int swigValue() {
     return swigValue;
@@ -58,7 +59,7 @@ public final class FILTER_OPERATORS {
     swigNext = this.swigValue+1;
   }
 
-  private static FILTER_OPERATORS[] swigValues = { FO_NONE, FO_TOKEN, FO_AND, FO_OR, FO_EQUALS, FO_NOT_EQUALS, FO_PARENTESIS_OPEN, FO_PARENTESIS_CLOSE, FO_NOT, FO_LESSTHAN, FO_LESSEQUALTHAN, FO_GREATERTHAN, FO_GREATEREQUALTHAN, FO_EXISTS };
+  private static FILTER_OPERATORS[] swigValues = { FO_NONE, FO_TOKEN, FO_AND, FO_OR, FO_EQUALS, FO_NOT_EQUALS, FO_PARENTESIS_OPEN, FO_PARENTESIS_CLOSE, FO_NOT, FO_LESSTHAN, FO_LESSEQUALTHAN, FO_GREATERTHAN, FO_GREATEREQUALTHAN, FO_EXISTS, FO_LIKE };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;
