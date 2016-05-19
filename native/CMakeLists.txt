@@ -53,6 +53,8 @@ IF ("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
 		# Add /q to make the vcredist install silent
 		set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "ExecWait '\\\"$INSTDIR\\\\bin\\\\${vcredist_name}\\\" /q'" )
 	endif( vcredist_name )
+
+	add_definitions(-DWIN32_LEAN_AND_MEAN)
 ENDIF ("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
 
 message( STATUS "System Name " ${CMAKE_SYSTEM_NAME} )
@@ -102,7 +104,7 @@ IF (LINUX)
 	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-clientStatic${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} pthread uuid rt)
 ENDIF (LINUX)
 IF (WIN32)
-	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-client${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}pthreadVC2${LIBRARY_SUFFIX} Rpcrt4.lib)
+	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-client${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}pthreadVC2${LIBRARY_SUFFIX} Rpcrt4.lib ${LIBRARY_PREFIX}libboost_system-vc100-mt-1_55${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}libboost_regex-vc100-mt-1_55${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}libboost_date_time-vc100-mt-1_55${LIBRARY_SUFFIX})
 ENDIF (WIN32)
 IF (DARWIN)
 	target_link_libraries (djonjavadriver ${LIBRARY_PREFIX}djon-clientStatic${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-tx${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-network${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-command${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-db${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-filesystem${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-cache${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-bson${LIBRARY_SUFFIX} ${LIBRARY_PREFIX}djon-util${LIBRARY_SUFFIX}  ${LIBRARY_PREFIX}antlr3c${LIBRARY_SUFFIX} pthread boost_system boost_regex boost_date_time)
