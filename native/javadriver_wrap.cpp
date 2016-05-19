@@ -238,6 +238,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <stdexcept>
 
 
+#include <boost/asio.hpp>
 #include "includes/bsonarrayobj.h"
 #include "includes/bson.h"
 #include "includes/bsonobj.h"
