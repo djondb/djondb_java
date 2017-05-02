@@ -108,6 +108,7 @@ public class DjondbConnectionTest
 			 o.add("name", "John");
 			 o.add("lastName", "Smith");
 			 o.add("age", 10);
+			 o.add("salary", 150000.35);
 			 assertEquals(1, con.insert("dbjavacon", "insert", o));
 		 } catch (DjondbException e) {
 			 e.printStackTrace();
@@ -119,11 +120,16 @@ public class DjondbConnectionTest
 		 printLog("testInsertFind");
 		 try {
 			 DjondbConnection con = new DjondbConnection("localhost");
+
 			 assertTrue(con.open());
+
+			 con.dropNamespace("dbjavacon", "find");
+
 			 Bson o = new Bson();
 			 o.add("name", "John");
 			 o.add("lastName", "Smith");
 			 o.add("age", 10);
+			 o.add("salary", 150000.35);
 			 assertEquals(1, con.insert("dbjavacon", "find", o));
 
 			 DjondbCursor cur = con.find("dbjavacon", "find", "*", "");
